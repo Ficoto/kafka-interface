@@ -14,7 +14,6 @@ type Consumer struct {
 	config     *sarama.Config
 	topics     []string
 	logger     logger.LogWriter
-	msgType    message.MsgType
 	ctxPool    sync.Pool
 	handlerMap map[string]map[string]consumer.RealHandler
 	ctx        context.Context
@@ -40,10 +39,10 @@ func New(setters ...Setter) consumer.Consumer {
 	return c
 }
 
-func (c *Consumer) generateHandle(handle func(ctx consumer.Context) error) func(msg any) error {
+func (c *Consumer) generateHandle(handle func(ctx consumer.Context) error, msgType message.MsgType) func(msg any) error {
 	return func(msg any) error {
 		m, _ := msg.(*sarama.ConsumerMessage)
-		ctx, err := consumer.GenerateCTXByByte(context.Background(), m.Value, c.msgType)
+		ctx, err := consumer.GenerateCTXByByte(context.Background(), m.Value, msgType)
 		if err != nil {
 			return err
 		}
@@ -74,7 +73,7 @@ func (c *Consumer) AddHandler(handlers ...consumer.Handler) {
 			c.handlerMap[handler.Topic] = make(map[string]consumer.RealHandler)
 		}
 		var rh consumer.RealHandler
-		rh.Handle = c.generateHandle(handler.Handle)
+		rh.Handle = c.generateHandle(handler.Handle, handler.MsgType)
 		rh.Callback = c.generateCallback(handler.Callback)
 		rh.IsRetry = handler.IsRetry
 		if rh.IsRetry == nil && handler.RetryTimes != 0 {

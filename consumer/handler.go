@@ -1,6 +1,9 @@
 package consumer
 
-import "github.com/Ficoto/go-gp"
+import (
+	"github.com/Ficoto/go-gp"
+	"github.com/Ficoto/kafka-interface/message"
+)
 
 type IsRetry func(msg any, failTimes int) bool
 
@@ -12,6 +15,7 @@ type Handler struct {
 	Callback   func(msg any, err error)
 	RetryTimes int
 	IsRetry    IsRetry
+	MsgType    message.MsgType
 }
 
 const DefaultRetryTimes = 3
