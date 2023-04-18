@@ -79,7 +79,6 @@ func (c *Consumer) AddHandler(handlers ...consumer.Handler) {
 			rh.IsRetry = consumer.IsRetryByFailTimes(handler.RetryTimes)
 		}
 		rh.GP = gp.New(gp.SetLogger(c.logger), gp.SetMaxPoolSize(handler.PoolSize))
-		rh.GP.Run()
 		c.handlerMap[handler.Topic][handler.Key] = rh
 	}
 }

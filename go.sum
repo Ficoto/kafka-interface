@@ -1,5 +1,5 @@
-github.com/Ficoto/go-gp v0.2.1 h1:JYyJxwmmlPHBxHTCkdFZ71pzpVEUAkOH3QaG5Qs0U68=
-github.com/Ficoto/go-gp v0.2.1/go.mod h1:ZvosLbBTXWj2fbcoY8XJCvsY3iQL6TOK+9Otd0Nm+pM=
+github.com/Ficoto/go-gp v0.3.0 h1:PHVhsJiDK2EdnyEi6a7yG6e78smsyIZTGKuacSjapU4=
+github.com/Ficoto/go-gp v0.3.0/go.mod h1:ZvosLbBTXWj2fbcoY8XJCvsY3iQL6TOK+9Otd0Nm+pM=
 github.com/Shopify/sarama v1.38.1 h1:lqqPUPQZ7zPqYlWpTh+LQ9bhYNu2xJL6k1SJN4WVe2A=
 github.com/Shopify/sarama v1.38.1/go.mod h1:iwv9a67Ha8VNa+TifujYoWGxWnu2kNVAQdSdZ4X2o5g=
 github.com/Shopify/toxiproxy/v2 v2.5.0 h1:i4LPT+qrSlKNtQf5QliVjdP08GyAH8+BUIc9gT0eahc=
